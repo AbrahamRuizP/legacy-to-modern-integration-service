@@ -1,0 +1,91 @@
+# =========================
+# Java / Maven
+# =========================
+
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven wrapper generated files
+.mvn/timing.properties
+
+
+# =========================
+# IntelliJ IDEA
+# =========================
+
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+
+# =========================
+# Eclipse
+# =========================
+
+.classpath
+.project
+.settings/
+.factorypath
+
+
+# =========================
+# VS Code
+# =========================
+
+.vscode/
+
+
+# =========================
+# OS generated files
+# =========================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# =========================
+# Logs
+# =========================
+
+*.log
+logs/
+
+
+# =========================
+# WildFly
+# =========================
+
+# Server generated/deployed content
+standalone/deployments/
+standalone/data/
+standalone/log/
+standalone/tmp/
+
+# WildFly generated configuration
+standalone/configuration/*.xml
+
+
+# =========================
+# Environment / local config
+# =========================
+
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# Temporary files
+# =========================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
