@@ -1,0 +1,20 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: legacy_db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: legacy_db
+      POSTGRES_USER: legacy_user
+      POSTGRES_PASSWORD: legacy_password
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
