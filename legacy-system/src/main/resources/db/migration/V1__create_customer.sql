@@ -10,5 +10,41 @@ CREATE TABLE customer (
     updated_at TIMESTAMP WITH TIME ZONE NOT NULL,
     status VARCHAR(50) NOT NULL,
 
-    CONSTRAINT pk_customer PRIMARY KEY (id)
+    CONSTRAINT pk_customer PRIMARY KEY (id),
+
+    CONSTRAINT uk_customer_email UNIQUE (email)
 );
+
+INSERT INTO customer (
+    first_name,
+    last_name,
+    email,
+    phone,
+    status,
+    created_at
+)
+VALUES
+    (
+        'John',
+        'Smith',
+        'john.smith@example.com',
+        '+59891234567',
+        'ACTIVE',
+        '2026-09-01 10:30:00'
+    ),
+    (
+        'Alice',
+        'Brown',
+        'alice.brown@example.com',
+        '+59898765432',
+        'ACTIVE',
+        '2026-09-02 14:15:00'
+    ),
+    (
+        'Michael',
+        'Wilson',
+        'michael.wilson@example.com',
+        '+59891222333',
+        'INACTIVE',
+        '2026-09-03 09:00:00'
+    );
