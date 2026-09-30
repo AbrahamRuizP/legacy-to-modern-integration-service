@@ -16,5 +16,21 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  flyway:
+    image: flyway/flyway
+    container_name: legacy-flyway
+
+    depends_on:
+      - postgres
+
+    command:
+      - -url=jdbc:postgresql://postgres:5432/legacy_db
+      - -user=legacy_user
+      - -password=legacy_password
+      - migrate
+
+    volumes:
+      - ./legacy-system/src/main/resources/db/migration:/flyway/sql
+
 volumes:
   postgres_data:
