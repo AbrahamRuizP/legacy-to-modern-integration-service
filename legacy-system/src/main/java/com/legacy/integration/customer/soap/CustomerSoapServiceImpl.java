@@ -19,8 +19,10 @@ public class CustomerSoapServiceImpl implements CustomerSoapService {
     private CustomerService customerService;
 
     @Override
-    public CustomerSoapResponse getCustomerById(UUID id) {
-        Customer customer = customerService.findById(id);
+    public CustomerSoapResponse getCustomerById(String id) {
+        UUID uuid = UUID.fromString(id);
+
+        Customer customer = customerService.findById(uuid);
         return toResponse(customer);
     }
 
