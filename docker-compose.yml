@@ -16,12 +16,19 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U legacy_user -d legacy_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   flyway:
     image: flyway/flyway
     container_name: legacy-flyway
 
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
     command:
       - -url=jdbc:postgresql://postgres:5432/legacy_db
