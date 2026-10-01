@@ -2,6 +2,7 @@ package com.legacy.integration.customer.repository;
 
 import com.legacy.integration.customer.entity.Customer;
 import com.legacy.integration.customer.entity.CustomerStatus;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -9,6 +10,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+@ApplicationScoped
 public class CustomerRepository {
 
     @PersistenceContext(unitName = "legacyPersistenceUnit")
