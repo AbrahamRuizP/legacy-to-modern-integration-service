@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Setter
@@ -20,7 +19,7 @@ public class CustomerSoapResponse {
     private UUID id;
     private String firstName;
     private String lastName;
-    private Instant createdAt;
+    private String createdAt;
     private String status;
 
 }

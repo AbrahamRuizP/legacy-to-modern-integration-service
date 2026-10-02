@@ -33,7 +33,7 @@ public class CustomerSoapServiceImpl implements CustomerSoapService {
             response.setFirstName(c.getFirstName());
             response.setLastName(c.getLastName());
             response.setStatus(c.getStatus().name());
-            response.setCreatedAt(c.getCreatedAt());
+            response.setCreatedAt(c.getCreatedAt().toString());
             return response;
         }
         return null;
