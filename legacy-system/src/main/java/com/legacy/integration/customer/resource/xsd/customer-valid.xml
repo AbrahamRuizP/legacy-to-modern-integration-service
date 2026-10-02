@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<customer
+        xmlns="http://legacy.integration/customer">
+
+    <id>8f6a10d4-b574-4162-916e-fc3349bb528a</id>
+
+    <firstName>John</firstName>
+
+    <lastName>Smith</lastName>
+
+    <createdAt>2026-09-01T10:30:00Z</createdAt>
+
+    <status>ACTIVE</status>
+
+</customer>

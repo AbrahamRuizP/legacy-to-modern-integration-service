@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<customer
+        xmlns="http://legacy.integration/customer">
+
+    <id>not-a-uuid</id>
+
+    <firstName>John</firstName>
+
+    <lastName>Smith</lastName>
+
+    <createdAt>yesterday</createdAt>
+
+    <status>DELETED</status>
+
+</customer>
