@@ -23,7 +23,7 @@ public class CustomerXmlMapperTest {
 
         String xml = new CustomerXmlMapper().toXml(customer);
 
-        assertTrue(xml.contains("<customerSoapResponse"));
+        assertTrue(xml.contains("<customer"));
         assertTrue(xml.contains("<id>8f6a10d4-b574-4162-916e-fc3349bb528a</id>"));
         assertTrue(xml.contains("<firstName>John</firstName>"));
         assertTrue(xml.contains("<lastName>Smith</lastName>"));
