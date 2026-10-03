@@ -34,16 +34,16 @@ public class CustomerXmlMapperTest {
     @Test
     void shouldGenerateXmlThatConformsToCustomerSchema() {
 
-        CustomerSoapResponse customer = new CustomerSoapResponse();
+        CustomerSoapResponse response = new CustomerSoapResponse();
 
-        customer.setId(UUID.fromString("8f6a10d4-b574-4162-916e-fc3349bb528a"));
-        customer.setFirstName("John");
-        customer.setLastName("Smith");
-        customer.setCreatedAt("2026-09-01T10:30:00Z");
-        customer.setStatus("ACTIVE");
+        response.setId(UUID.fromString("8f6a10d4-b574-4162-916e-fc3349bb528a"));
+        response.setFirstName("John");
+        response.setLastName("Smith");
+        response.setCreatedAt("2026-09-01T10:30:00Z");
+        response.setStatus("ACTIVE");
 
         CustomerXmlMapper customerXmlMapper = new CustomerXmlMapper();
-        String xml = customerXmlMapper.toXml(customer);
+        String xml = customerXmlMapper.toXml(response);
 
         XmlSchemaValidator validator = new XmlSchemaValidator();
 
