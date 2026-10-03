@@ -54,6 +54,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -67,6 +68,37 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>4.0.3</version>
+
+                <executions>
+                    <execution>
+                        <id>generate-soap-client</id>
+                        <phase>generate-sources</phase>
+
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <wsdlUrls>
+                                <wsdlUrl>
+                                    http://localhost:8080/legacy-system/CustomerService?wsdl
+                                </wsdlUrl>
+                            </wsdlUrls>
+
+                            <packageName>
+                                com.legacy.integration.customer.soap.generated
+                            </packageName>
+
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
