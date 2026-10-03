@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: integration-service
+
+server:
+  port: 8081
