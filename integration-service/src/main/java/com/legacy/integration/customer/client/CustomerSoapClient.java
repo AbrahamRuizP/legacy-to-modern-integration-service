@@ -19,6 +19,10 @@ public class CustomerSoapClient {
                 service.getCustomerServicePort();
     }
 
+    CustomerSoapClient(CustomerSoapService soapService) {
+        this.soapService = soapService;
+    }
+
     public CustomerSoapResponse getCustomerById(String customerId) {
         return soapService.getCustomerById(customerId);
     }
