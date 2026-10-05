@@ -39,6 +39,16 @@ public class CustomerSoapClient {
         return soapService.getCustomerById(customerId);
     }
 
+    public String getLastResponseXml() {
+        if (soapHandler == null) {
+            throw new IllegalStateException(
+                    "SOAP handler is not configured"
+            );
+        }
+
+        return soapHandler.getLastResponseXml();
+    }
+
     private void configureHandler() {
 
         BindingProvider bindingProvider =

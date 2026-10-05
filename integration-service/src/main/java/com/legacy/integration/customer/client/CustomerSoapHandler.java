@@ -33,7 +33,9 @@ public class CustomerSoapHandler implements SOAPHandler<SOAPMessageContext> {
     }
 
     public String getLastResponseXml() {
-        return lastResponseXml.get();
+        String xml = lastResponseXml.get();
+        lastResponseXml.remove();
+        return xml;
     }
 
     private void captureMessage(SOAPMessage message) {
@@ -72,7 +74,7 @@ public class CustomerSoapHandler implements SOAPHandler<SOAPMessageContext> {
 
     @Override
     public void close(MessageContext context) {
-        lastResponseXml.remove();
+        // Empty method
     }
 
     @Override

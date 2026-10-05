@@ -4,8 +4,7 @@ import com.legacy.integration.customer.soap.generated.CustomerSoapResponse;
 import com.legacy.integration.customer.soap.generated.CustomerSoapService;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerSoapClientTest {
 
@@ -25,5 +24,25 @@ class CustomerSoapClientTest {
 
         assertEquals(CUSTOMER_ID, receivedCustomerId[0]);
         assertSame(expectedResponse, actualResponse);
+    }
+
+    @Test
+    void shouldCaptureRealSoapResponse() {
+
+        CustomerSoapClient client =
+                new CustomerSoapClient();
+
+        CustomerSoapResponse response =
+                client.getCustomerById(CUSTOMER_ID);
+
+        assertNotNull(response);
+
+        String xml =
+                client.getLastResponseXml();
+
+        assertNotNull(xml);
+        assertFalse(xml.isBlank());
+
+        System.out.println(xml);
     }
 }
