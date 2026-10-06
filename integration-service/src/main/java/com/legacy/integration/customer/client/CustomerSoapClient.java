@@ -44,7 +44,7 @@ public class CustomerSoapClient {
         return soapService.getCustomerById(customerId);
     }
 
-    public String getValidateCustomerXml() {
+    public String getValidatedCustomerXml() {
 
         if (soapHandler == null ||
         responseProcessor == null) {

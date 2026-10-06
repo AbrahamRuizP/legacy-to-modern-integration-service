@@ -3,8 +3,7 @@ package com.legacy.integration.customer.client;
 import com.legacy.integration.customer.soap.generated.CustomerSoapResponse;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerSoapClientIntegrationTest {
 
@@ -26,5 +25,37 @@ public class CustomerSoapClientIntegrationTest {
         assertEquals("John", response.getFirstName());
         assertEquals("Smith", response.getLastName());
         assertEquals("ACTIVE", response.getStatus());
+    }
+
+    @Test
+    void shouldCaptureExtractAndValidateRealSoapPayload() {
+
+        CustomerSoapClient client =
+                new CustomerSoapClient();
+
+        client.getCustomerById(CUSTOMER_ID);
+
+        String customerXml =
+                client.getValidatedCustomerXml();
+
+        assertNotNull(customerXml);
+
+        assertTrue(
+                customerXml.contains(
+                        "http://legacy.integration/customer"
+                )
+        );
+
+        assertTrue(
+                customerXml.contains(
+                        "<firstName>John</firstName>"
+                )
+        );
+
+        assertTrue(
+                customerXml.contains(
+                        "<status>ACTIVE</status>"
+                )
+        );
     }
 }
