@@ -14,6 +14,7 @@ import java.util.List;
 @Component
 public class CustomerSoapClient {
 
+    private final CustomerSoapResponseProcessor responseProcessor;
     private final CustomerSoapService soapService;
     private final CustomerSoapHandler soapHandler;
 
@@ -21,6 +22,9 @@ public class CustomerSoapClient {
 
         CustomerService service =
                 new CustomerService();
+
+        this.responseProcessor
+                = new CustomerSoapResponseProcessor();
 
         this.soapService =
                 service.getCustomerServicePort();
@@ -32,11 +36,33 @@ public class CustomerSoapClient {
 
     CustomerSoapClient(CustomerSoapService soapService) {
         this.soapService = soapService;
+        this.responseProcessor = null;
         this.soapHandler = null;
     }
 
     public CustomerSoapResponse getCustomerById(String customerId) {
         return soapService.getCustomerById(customerId);
+    }
+
+    public String getValidateCustomerXml() {
+
+        if (soapHandler == null ||
+        responseProcessor == null) {
+            throw new IllegalStateException(
+                    "SOAP response processing is not configured"
+            );
+        }
+
+        String soapXml =
+                soapHandler.getLastResponseXml();
+
+        if (soapXml == null) {
+            throw new IllegalStateException(
+                    "No SOAP response has been captured"
+            );
+        }
+
+        return responseProcessor.extractAndValidate(soapXml);
     }
 
     public String getLastResponseXml() {
@@ -58,7 +84,9 @@ public class CustomerSoapClient {
                 bindingProvider.getBinding();
 
         List<Handler> handlers =
-                new ArrayList<>(binding.getHandlerChain());
+                new ArrayList<>(
+                        binding.getHandlerChain()
+                );
 
         handlers.add(soapHandler);
 
